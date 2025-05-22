@@ -38,7 +38,7 @@ var ms = MemStorage{
 
 func saveMetric(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
-		http.Error(w, "Method not allowed", http.StatusBadRequest)
+		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 		return
 	}
 
@@ -49,7 +49,7 @@ func saveMetric(w http.ResponseWriter, r *http.Request) {
 
 	parts := strings.Split(strings.Trim(r.URL.Path, "/"), "/")
 	if len(parts) != 4 {
-		http.Error(w, "invalid path", http.StatusBadRequest)
+		http.Error(w, "invalid path", http.StatusNotFound)
 		return
 	}
 
